@@ -1,15 +1,15 @@
 @model IEnumerable<Estacionamento.Models.Veiculo>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Veículos";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Criar novo</a>
+    <a asp-action="Create" class="btn btn-primary">Criar novo</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -21,7 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.HORASAI)
             </th>
-            <th></th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -40,27 +40,13 @@
                 <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Detalhes</a> |
                 <a asp-action="Delete" asp-route-id="@item.ID">Excluir</a>
+
+                @if (!item.HORASAI.HasValue)
+                {
+                    <a asp-action="Saida" asp-route-id="@item.ID" class="btn btn-warning btn-sm">Registrar Saída</a>
+                }
             </td>
         </tr>
 }
     </tbody>
 </table>
-
-<th>Ações</th>
-
-<tbody>
-@foreach(var v in Model)
-{
-    <tr>
-        <td>@v.PLACA</td>
-        <td>@v.HORAENT.ToString("g")</td>
-        <td>@(v.HORASAI.HasValue ? v.HORASAI.Value.ToString("g") : "-")</td>
-        <td>
-            @if (!v.HORASAI.HasValue)
-            {
-                <a asp-action="Saida" asp-route="@v.ID" class="btn btn-warning btn-sm">Registrar Saída</a>
-            }
-        </td>
-    </tr>
-}
-</tbody>

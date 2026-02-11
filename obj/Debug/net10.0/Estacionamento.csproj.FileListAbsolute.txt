@@ -336,3 +336,4 @@ C:\Users\User\Desktop\Benner\Estacionamento\bin\Debug\net10.0\tr\Microsoft.CodeA
 C:\Users\User\Desktop\Benner\Estacionamento\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\User\Desktop\Benner\Estacionamento\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\User\Desktop\Benner\Estacionamento\obj\Debug\net10.0\compressed\jt05jazgz7-{0}-aevxj199bl-aevxj199bl.gz
+C:\Users\User\Desktop\Benner\Estacionamento\obj\Debug\net10.0\Estacionamento.sourcelink.json
