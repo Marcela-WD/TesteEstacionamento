@@ -1,0 +1,16 @@
+@model Estacionamento.Models.Veiculo
+
+@{
+    ViewData["Title"] = "Recibo de Saída";
+}
+
+<h2>Recibo de Saída</h2>
+
+<p><strong>Placa:</strong> @Model.PLACA</p>
+<p><strong>Hora de Entrada:</strong> @Model.HORAENT.ToString("g")</p>
+<p><strong>Hora de Saída:</strong> @Model.HORASAI.Value.ToString("g")</p>
+<p><strong>Valor Total:</strong>R$ @ViewBag.ValorTotal</p>
+
+<p>
+    <a asp-action="Index class="btn btn-primary">Voltar</a>
+</p>
