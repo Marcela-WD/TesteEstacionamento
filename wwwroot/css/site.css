@@ -35,3 +35,16 @@ body {
   font-size: 15px;
   font-weight: bold;
 }
+
+body {
+    background-color: #f4f6f9;
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    transition: 0.2s ease-in-out;
+}

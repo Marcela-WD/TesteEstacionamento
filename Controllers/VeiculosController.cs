@@ -186,18 +186,28 @@ namespace Estacionamento.Controllers
                 .FirstOrDefault();
 
             if (tarifaAtual != null)
-            {
+            {   
+                TimeSpan diff = veiculo.HORASAI.Value - veiculo.HORAENT;
+                double totalMinutes = diff.TotalMinutes;
                 var horas = (veiculo.HORASAI.Value - veiculo.HORAENT).TotalHours;
-                horas = Math.Ceiling(horas);
+                // horas = Math.Ceiling(horas);
                 decimal valor = 0;
 
                 if (horas <= 0.5)
-                  valor = tarifaAtual.VALHORAINI / 2;  
+                    valor = tarifaAtual.VALHORAINI / 2;  
                 else
-                if (horas <= 1)
-                  valor = tarifaAtual.VALHORAINI;
-                else
-                  valor = tarifaAtual.VALHORAINI + (decimal)(horas - 1) * tarifaAtual.VALHORAADI;  
+                {
+                    int horasCompletas = (int)(totalMinutes / 60);
+                    int minutosRestantes = (int)(totalMinutes % 60);
+
+                    int horasAdicionais = minutosRestantes <= 10 ? 0 : 1;
+
+                    valor = tarifaAtual.VALHORAINI + (horasCompletas + horasAdicionais - 1) * tarifaAtual.VALHORAADI;
+                }
+                // if (horas <= 1)
+                //   valor = tarifaAtual.VALHORAINI;
+                // else
+                //   valor = tarifaAtual.VALHORAINI + (decimal)(horas - 1) * tarifaAtual.VALHORAADI;  
 
                 ViewBag.ValorTotal = valor;
                   

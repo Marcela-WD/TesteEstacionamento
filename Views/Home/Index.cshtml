@@ -1,8 +1,40 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Sistema de Estacionamento";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4 fw-bold text-primary">
+            🚗 Estacionamento 🚗
+        </h1>
+        <p class="lead mt-3">
+            Controle de entrada e saída de veículos.
+        </p>
+    </div>
+
+    <hr class="my-4" />
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+            <div class="card shadow-sm p-3">
+                <h4>Entrada de Veículo</h4>
+                <p>Registrar entrada de veículo.</p>
+                <a href="/Veiculos" class="btn btn-primary mb-2">
+                    Ver Lista
+                </a>
+                
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card shadow-sm p-3">
+                <h4>Registo de tarifas</h4>
+                <p>Registrar tarifas vigentes.</p>
+                <a href="/Tarifas" class="btn btn-primary">
+                    Ver Lista
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -6,8 +6,10 @@ namespace Estacionamento.Models
     public class Tarifa
     {
         public int ID { get; set; }
+        [DataType(DataType.Currency)] 
         [Display(Name = "Valor hora inicial")]
         public decimal VALHORAINI { get; set; }
+        [DataType(DataType.Currency)] 
         [Display(Name = "Valor hora adicional")]
         public decimal VALHORAADI { get; set; }
         [Display(Name = "Inicio da vigência")]

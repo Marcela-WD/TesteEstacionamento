@@ -1,7 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Estacionamento.Data;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -10,6 +15,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")
     )                                              
 );    
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var culture = new CultureInfo("pt-BR");
+    options.DefaultRequestCulture = new RequestCulture(culture);
+    options.SupportedCultures = new List<CultureInfo> { culture };
+    options.SupportedUICultures = new List<CultureInfo> { culture };
+
+    options.RequestCultureProviders.Clear();
+});
 
 var app = builder.Build();
 
@@ -20,6 +35,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseRequestLocalization();
 
 app.UseHttpsRedirection();
 app.UseRouting();
