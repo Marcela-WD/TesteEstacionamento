@@ -9,6 +9,12 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Cadastrar entrada de veículo</a>
 </p>
+
+<form method="get" asp-action="Index" class="form-inline mb-3">
+    <input type="text" name="placa" class="form-control form-control-sm mr-2" placeholder="Filtrar por placa" value="@Context.Request.Query["placa"]" style="max-width: 200px;" />
+    <button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
+</form>
+
 <table class="table table-striped">
     <thead>
         <tr>

@@ -24,9 +24,15 @@ namespace Estacionamento.Controllers
         }
 
         // GET: Veiculos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string placa)
         {
-            return View(await _context.VEICULO.ToListAsync());
+            var veiculos = _context.VEICULO.AsQueryable();
+            if (!string.IsNullOrEmpty(placa))
+            {
+                placa = placa.ToUpper().Trim();
+                veiculos = veiculos.Where(v => v.PLACA.ToUpper().Contains(placa));
+            }
+            return View(veiculos.ToList());
         }
 
         // GET: Veiculos/Details/5
